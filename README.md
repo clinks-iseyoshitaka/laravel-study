@@ -1,11 +1,10 @@
-🌙 docker-php-laravel
+🌙 laravel-study
 ====
 
-[![isystk](https://circleci.com/gh/isystk/docker-php-laravel.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
-![GitHub issues](https://img.shields.io/github/issues/isystk/docker-php-laravel)
-![GitHub forks](https://img.shields.io/github/forks/isystk/docker-php-laravel)
-![GitHub stars](https://img.shields.io/github/stars/isystk/docker-php-laravel)
-![GitHub license](https://img.shields.io/github/license/isystk/docker-php-laravel)
+![GitHub issues](https://img.shields.io/github/issues/clinks-iseyoshitaka/laravel-study)
+![GitHub forks](https://img.shields.io/github/forks/clinks-iseyoshitaka/laravel-study)
+![GitHub stars](https://img.shields.io/github/stars/clinks-iseyoshitaka/laravel-study)
+![GitHub license](https://img.shields.io/github/license/clinks-iseyoshitaka/laravel-study)
 
 ## 📗 プロジェクトの概要
 
@@ -39,13 +38,9 @@ Laravel（PHP）の学習用サンプルアプリケーションです。
 
 #### ■ フロント画面
 
-https://laraec.isystk.com/
-
 ![フロント画面](./front.png "フロント画面")
 
 #### ■ 管理画面
-
-https://laraec.isystk.com/admin/
 
 ![管理画面](./admin.png "管理画面")
 
@@ -266,10 +261,10 @@ $ ./dc.sh stop
 
 ## 🎫 Licence
 
-[MIT](https://github.com/isystk/docker-php-laravel/blob/master/LICENSE)
+[MIT](https://github.com/clinks-iseyoshitaka/laravel-study/blob/master/LICENSE)
 
 ## 👀 Author
 
-[isystk](https://github.com/isystk)
+[clinks-iseyoshitaka](https://github.com/clinks-iseyoshitaka)
 
 
