@@ -15,6 +15,7 @@ Laravel（PHP）の学習用サンプルアプリケーションです。
 - Dockerを利用したLaravelの開発環境を構築したい方
 - ECサイトを学習してみたい方
 - 管理画面も作成（マルチログイン）を作成したい方
+- Stripeを利用した決算処理を作成してみたい方
 - ソーシャルログインを作成してみたい方
 - オブジェクトストレージへの画像アップロードを作成してみたい方
 
@@ -103,9 +104,9 @@ options = "metadata"
 ---
 
 以下のように Cドライブのパスが"/mnt/c/"→"/c/" に変更されていれば正常です。
-$ cd /c/Users/USER/github/docker-php-laravel
+$ cd /c/Users/USER/github/laravel-study
 $ pwd
-/c/Users/USER/github/docker-php-laravel
+/c/Users/USER/github/laravel-study
 
 # WSL 上にDockerとDocker Composeをインストールする。
 $ apt-get install docker
@@ -175,7 +176,6 @@ $ npm install -g yarn
 │   ├── bootstrap
 │   ├── config
 │   ├── database
-│   ├── logs
 │   ├── public
 │   ├── resources
 │   ├── routes
