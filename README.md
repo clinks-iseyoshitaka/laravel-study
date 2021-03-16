@@ -218,6 +218,37 @@ Dockerを起動後に以下のURLにアクセスすると利用可能です。
 
 http://localhost:8025/
 
+
+#### minio
+S3に準拠したダミーのオブジェクトストレージです。
+Dockerを起動後に以下のURLにアクセスすると利用可能です。
+
+http://localhost:9090
+ACCESS_KEY → access_key
+SECRET_ACCESS_KEY → secret_key
+
+```bash
+# プロファイルを作成する
+$ aws configure --profile laraec
+---
+AWS Access Key ID [None]: access_key
+AWS Secret Access Key [None]: secret_key
+Default region name [None]: ap-northeast-1
+Default output format [None]: json
+---
+# バケットを作成する
+$ aws --endpoint-url http://localhost:9090 --profile laraec s3 mb s3://laraec.isystk.com
+# バケットを公開する
+$ POLICY='{ "Version": "2012-10-17", "Statement": [{ "Sid": "MakeItPublic", "Effect": "Allow", "Principal": "*", "Action": "s3:GetObject", "Resource": "arn:aws:s3:::laraec.isystk.com/*" }] }'
+$ aws --endpoint-url http://localhost:9090 --profile laraec s3api put-bucket-policy --bucket laraec.isystk.com --policy $POLICY
+# バケットの一覧を確認する
+$ aws --endpoint-url http://localhost:9090 --profile laraec s3 ls
+# テストファイルをアップロードする
+$ echo 'hello' > test.txt
+$ aws --endpoint-url http://localhost:9090 --profile laraec s3 cp ./test.txt s3://laraec.isystk.com
+```
+
+
 ## 💬 使い方
 
 ```
