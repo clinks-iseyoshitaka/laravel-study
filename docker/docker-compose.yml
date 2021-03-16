@@ -3,8 +3,8 @@ version: '3'
 services:
 
   apache:
-    image: docker-php-laravel/apache
-    container_name: docker-php-laravel-apache
+    image: laravel-study/apache
+    container_name: laravel-study-apache
     build:
       context: "./apache"
       dockerfile: "Dockerfile"
@@ -19,8 +19,8 @@ services:
      - ../htdocs:/var/www/html
 
   php:
-    image: docker-php-laravel/php
-    container_name: docker-php-laravel-php
+    image: laravel-study/php
+    container_name: laravel-study-php
     build:
       context: "./php"
       dockerfile: "Dockerfile"
@@ -30,8 +30,8 @@ services:
      - ../htdocs:/var/www/html
 
   mysql:
-    image: docker-php-laravel/mysql
-    container_name: docker-php-laravel-mysql
+    image: laravel-study/mysql
+    container_name: laravel-study-mysql
     build:
       context: "./mysql"
       dockerfile: "Dockerfile"
@@ -46,8 +46,8 @@ services:
      - ./mysql/logs:/var/log/mysql
 
   phpmyadmin:
-    image: docker-php-laravel/phpmyadmin
-    container_name: docker-php-laravel-phpmyadmin
+    image: laravel-study/phpmyadmin
+    container_name: laravel-study-phpmyadmin
     build:
       context: "./phpmyadmin"
       dockerfile: "Dockerfile"
@@ -63,14 +63,14 @@ services:
 
   mailhog:
     image: mailhog/mailhog:latest
-    container_name: docker-php-laravel-mailhog
+    container_name: laravel-study-mailhog
     ports:
       - 8025:8025
       - 25:1025
 
   s3:
     image: minio/minio:latest
-    container_name: docker-php-laravel-s3
+    container_name: laravel-study-s3
     environment:
       MINIO_ACCESS_KEY: "access_key"
       MINIO_SECRET_KEY: "secret_key"

@@ -11,7 +11,7 @@
 Laravel（PHP）の学習用サンプルアプリケーションです。
 
 ### 対象としている方
-- Laravelを学習してみたい方
+- Laravelを初めて学習してみたい方
 - Dockerを利用したLaravelの開発環境を構築したい方
 - ECサイトを学習してみたい方
 - 管理画面も作成（マルチログイン）を作成したい方
@@ -254,10 +254,13 @@ $ aws --endpoint-url http://localhost:9090 --profile laraec s3 cp ./test.txt s3:
 ## 💬 使い方
 
 ```
+# 下準備
+$ ./dc.sh init
+
 # サーバーを起動する
 $ ./dc.sh start
 
-# データベースが立ち上がるまで少し待ちます。(初回は1分程度)
+# データベースとPHPが立ち上がるまで少し待ちます。(初回は5分程度)
 
 # MySQLにログインしてみる
 $ ./dc.sh mysql login
