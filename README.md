@@ -89,7 +89,7 @@ https://qiita.com/endo_hizumi/items/0cc50bdfbd827579733e
 WSLの環境変数を変更（bashを利用している場合）→　WSL2の場合は不要です。（WSL1の場合のみ）
 $ echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
 
-以下のように環境変数が通っていれば正常です。
+以下のように環境変数が通っていれば正常です。（WSL1の場合のみ）
 $ echo $DOCKER_HOST
 tcp://localhost:2375
 
@@ -201,6 +201,9 @@ Options:
   mysql import <PAHT>      MySQLデータベースにdumpファイルをインポートします。
   mysql restart            MySQLデータベースを再起動します。
   php login                PHP-FPMのサーバーにログインします。
+  php cache                Laravelのキャッシュをクリアします。
+  php migrate              Laravelのマイグレードを実行します。
+  php seed                 Laravelのテストデータを登録します。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 ```
@@ -219,13 +222,11 @@ Dockerを起動後に以下のURLにアクセスすると利用可能です。
 http://localhost:8025/
 
 
-#### minio
+### minio
 S3に準拠したダミーのオブジェクトストレージです。
 Dockerを起動後に以下のURLにアクセスすると利用可能です。
 
 http://localhost:9090
-ACCESS_KEY → access_key
-SECRET_ACCESS_KEY → secret_key
 
 ```bash
 # プロファイルを作成する
