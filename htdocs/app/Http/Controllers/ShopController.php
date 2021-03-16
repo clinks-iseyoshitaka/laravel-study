@@ -57,6 +57,7 @@ class ShopController extends Controller
         try {
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
+            // 料金を支払う人
             $customer = Customer::create(array(
                 'email' => $request->stripeEmail,
                 'source' => $request->stripeToken
@@ -64,6 +65,7 @@ class ShopController extends Controller
 
             $data = $cart->showCart();
 
+            // 料金の支払いを実行
             $charge = Charge::create(array(
                 'customer' => $customer->id,
                 'amount' => $data['sum'],

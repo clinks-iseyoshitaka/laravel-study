@@ -98,10 +98,16 @@ class StockController extends Controller
     {
         // 画像ファイルを公開ディレクトリへ配置する。
         if ($request->has('imageBase64')) {
-            $file = $request->validated()['imageFile'];
+            $tmpFile = $request->validated()['imageFile'];
+
             $fileName = $request->fileName;
+
+            //s3に画像をアップロード
+            $filename = $tmpFile->storeAs('myprefix', $fileName);
+
+            //ストレージにも画像を保存
             $target_path = public_path('uploads/stock/');
-            $file->move($target_path, $request->fileName);
+            $tmpFile->move($target_path, $fileName);
         } else {
             $fileName = "";
         }

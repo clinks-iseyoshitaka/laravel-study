@@ -2,26 +2,44 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\User;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Auth;
 
 class ShopTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
-     * @return void
+     * トップページが正しく表示されることの確認
      */
-    public function testExample()
+    public function testShopList()
     {
         $response = $this->get('/');
-        // $response->dump();
         // レスポンスの検証
-        // $response->assertSee('厳選した素材で作ったマカロンです。');
-        // $response
-        //     ->assertOk()  # ステータスコードが 200
-        // ;
-        $this->assertTrue(true);
+        $response->assertSee('厳選した素材で作ったマカロンです。');
+        $response
+            ->assertOk()  # ステータスコードが 200
+        ;
+    }
+
+    /**
+     * ログイン後にマイカートが表示されることの確認
+     */
+    public function testMyCart()
+    {
+        // ユーザー取得
+        $user = User::find(1);
+
+        // 認証済み、つまりログイン済みしたことにする
+        $this->actingAs($user);
+
+        // 認証されていることを確認
+        $this->assertTrue(Auth::check());
+
+        $response = $this->post('/mycart');
+        // レスポンスの検証
+        $response->assertSee('テスト1さんのカートの中身');
+        $response
+            ->assertOk()  # ステータスコードが 200
+        ;
     }
 }

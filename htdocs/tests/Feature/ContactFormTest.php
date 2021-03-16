@@ -3,34 +3,40 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-// use DatabaseMigrations; // テスト用データベースを使用
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Auth;
 
 class ContactFormTest extends TestCase
 {
-    // use RefreshDatabase;
-    // use WithFaker;
+    /**
+     * お問い合わせ登録画面が正しく表示されることを確認する
+     */
+    public function testContact()
+    {
+        $response = $this->get('/contact');
+        // レスポンスの検証
+        $response->assertSee('お問い合わせ登録');
+        $response
+            ->assertOk();  # ステータスコードが 200
+    }
 
     /**
-     * A basic feature test example.
-     *
-     * @return void
+     * お問い合わせ登録画面から投稿が正常に出来ることを確認する
      */
-    public function testExample()
+    public function testContactStore()
     {
-        // ユーザーを１つ作成
-        // $user = factory(User::class)->create();
-
-        // // 認証済み、つまりログイン済みしたことにする
-        // $this->actingAs($user);
-
-        // // 認証されていることを確認
-        // $this->assertTrue(Auth::check());
-
-        $response = $this->get('/contact');
-
-        $this->assertTrue(true);
+        $response = $this->post('/contact/store', [
+            'your_name' => 'テストユーザー',
+            'email' => 'test@test.com',
+            'gender' => '1',
+            'age' => '3',
+            'title' => 'テスト投稿',
+            'contact' => 'テストからの投稿です。',
+            'url' => '',
+            // 'imageBase64' => '',
+            'caution' => '1',
+        ]);
+        // 登録処理が完了して、完了画面にリダイレクトすることを検証
+        $response->assertRedirect('/contact/complete');
     }
 }
