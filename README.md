@@ -10,6 +10,9 @@
 
 Laravel（PHP）の学習用サンプルアプリケーションです。
 
+フロントエンドをReactでリメイクしたバージョンは[こちら](https://github.com/clinks-iseyoshitaka/laravel-react-study)
+
+
 ### 対象としている方
 - Laravelを初めて学習してみたい方
 - Dockerを利用したLaravelの開発環境を構築したい方
